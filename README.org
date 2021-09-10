@@ -1,0 +1,41 @@
+* AST Sample for C++ Source
+  Create dot output from query and db, and then get a rendered graph in SVG.
+
+  #+BEGIN_SRC sh
+    # 
+    export PATH=$HOME/local/vmsync/codeql250:"$PATH"
+
+    # Build db
+    cd ~/w/codeql-cpp/src/
+    codeql database create -j8 -v --language=cpp --command="clang example.cpp" -s . example.db
+
+    # Edit printast.ql in editor to select function
+
+    # Create dot graph 
+    cd ~/w/codeql-cpp/queries/
+    codeql database analyze                         \
+           ~/w/codeql-cpp/src/example.db/           \
+           ~/w/codeql-cpp/queries/printast.ql       \
+           -j8 -v --ram=16000                       \
+           --format=dot                             \
+           --output=printast.dot
+
+    # Query produced .dot file
+    cd ~/w/codeql-cpp/
+    ls queries/printast.dot/cpp/print-ast.dot
+
+    # Query produced .bqrs file
+    ls src/example.db/results/ast-queries-cpp/printast.bqrs 
+
+    # Generate SVG
+    cd ~/w/codeql-cpp/queries/printast.dot/cpp
+    dot -Tsvg < ./print-ast.dot > ./printast-ast.svg
+    open -a safari ./printast-ast.svg
+
+  #+END_SRC
+
+  #+CAPTION: AST graph from dot
+  #+NAME:   fig:graph-ast-1
+  [[./queries/printast.dot/cpp/printast-ast.svg]]
+
+  

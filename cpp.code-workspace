@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "queries"
+		},
+		{
+			"path": "src"
+		}
+	],
+	"settings": {
+		"omnisharp.autoStart": false,
+		"codeQL.runningQueries.autoSave": true
+	}
+}

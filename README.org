@@ -29,13 +29,13 @@
 
     # Generate SVG
     cd ~/w/codeql-cpp/queries/printast.dot/cpp
-    dot -Tsvg < ./print-ast.dot > ./printast-ast.svg
-    open -a safari ./printast-ast.svg
+    dot -Tsvg < ./print-ast.dot > ./print-ast.svg
+    open -a safari ./print-ast.svg
 
   #+END_SRC
 
   #+CAPTION: AST graph from dot
   #+NAME:   fig:graph-ast-1
-  [[./queries/printast.dot/cpp/printast-ast.svg]]
+  [[./queries/printast.dot/cpp/print-ast.svg]]
 
   

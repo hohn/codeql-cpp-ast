@@ -1,0 +1,24 @@
+digraph {
+  compound=true;
+  0[];
+  1[label="[Parameter] argc"; ];
+  2[label="[Parameter] argv"; ];
+  3[label="[ExprStmt] ExprStmt"; ];
+  4[label="[FormattingFunctionCall,FunctionCall] call to printf"; ];
+  5[label="hello world\n"; ];
+  6[label="[ArrayToPointerConversion] array to pointer conversion"; ];
+  7[label="[ReturnStmt] return ..."; ];
+  8[label="[Literal] 0"; ];
+  9[label="[BlockStmt] { ... }"; ];
+  10[label="[TopLevelFunction] int main(int, char**)"; ];
+  0 -> 1[label="getParameter(0)"; ];
+  10 -> 0[label="<params>"; ];
+  3 -> 4[label="getExpr()"; ];
+  4 -> 5[label="getArgument(0)"; ];
+  7 -> 8[label="getExpr()"; ];
+  9 -> 3[label="getStmt(0)"; ];
+  0 -> 2[label="getParameter(1)"; ];
+  10 -> 9[label="getEntryPoint()"; ];
+  4 -> 6[label="getArgument(0).getFullyConverted()"; ];
+  9 -> 7[label="getStmt(1)"; ];
+}
